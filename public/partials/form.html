@@ -1,0 +1,51 @@
+<h1 class="text-center">New Customer</h1>
+
+<p ng-show="messageError.length" class="alert alert-danger">{{messageError}}</p>
+
+<form novalidate name="customerForm" ng-submit="save()">
+	<fieldset>
+	<legend>Customer</legend>
+	<div class="form-row">
+	
+		<div class="form-group col-md-6">
+			<label for="name">Name</label>
+			<input type=text class="form-control" ng-model="customer.name" name="name" placeholder="Digite o nome do cliente" required />
+			<span ng-show="customerForm.$submitted && customerForm.name.$error.required" class="form-control alert-danger">
+				The name is required!
+			</span>
+			<!--div class="alert-danger">{this.state.msgErro}</div-->
+		</div>
+
+		<div class="form-group col-md-6">
+			<label for="limit">Limit</label>
+			<input type=number class="form-control" name="creditLimit" 
+				ng-model="customer.creditLimit" placeholder="Digite o creditLimit do cliente" required />
+			<span ng-show="customerForm.$submitted && customerForm.creditLimit.$error.required" class="form-control alert-danger">
+				The creditLimit is required!
+			</span>
+		</div>
+	</div>
+	
+	<div class="form-row">
+		<div class="form-group col-md-6">
+			<label for="risk">Risk</label>
+			<select name="risk" ng-model="customer.risk" class="form-control" 
+				ng-options="risk as risk for risk in risks" required>
+				<option value="">Select</option>
+			</select>
+			<span ng-show="customerForm.$submitted && customerForm.risk.$error.required" class="form-control alert-danger">
+				The risk is required!
+			</span>
+		</div>
+
+		<div class="form-group col-md-6" style="display:none">
+			<label for="rate">Rate</label>
+			<input type=text class="form-control" 
+				ng-model="customer.rate" name="rate" placeholder="Digite o rate do cliente" />
+		</div>
+	</div>
+  </fieldset>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <a href="/customer" class="btn btn-secondary">Cancel</button>
+</form>

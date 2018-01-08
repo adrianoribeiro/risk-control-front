@@ -1,0 +1,30 @@
+<h1 class="text-center">Risk Control</h1>
+
+<p ng-show="message.length" class="alert alert-success">{{message}}</p>
+
+<!-- Grid -->
+<table class="table table-striped">
+  <thead>
+	<tr>
+	  <th scope="col">Name</th>
+	  <th scope="col">Limit</th>
+	  <th scope="col">Risk</th>
+	  <th scope="col">Rate</th>
+	  <th scope="col">
+		<a href="/customers/new" class="btn btn-primary" data-toggle="modal" data-target="#myModal">New Customer</a>
+	  </th>
+	</tr>
+  </thead>
+  <tbody>
+		<tr ng-repeat="customer in customers">
+		  <td>{{customer.name}}</td>
+		  <td>{{customer.creditLimit}}</td>
+		  <td>{{customer.risk}}</td>
+		  <td>{{customer.rate}}</td>
+		  <td>
+			<a href="customers/edit/{{customer.id}}" class="btn btn-primary">Editar</a>
+			<button ng-click="remover(customer)" class="btn btn-danger">Remover</button>
+		  </td>
+		</tr>
+  </tbody>
+</table>
